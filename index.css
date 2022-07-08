@@ -75,6 +75,7 @@
         height: fit-content;
         display: grid;
         grid-template-columns: auto;
+        justify-items: start
     }
     .container, .section2, .section3, .section4, .section5, .section6 {
         width: 97%;
