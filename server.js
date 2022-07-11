@@ -142,7 +142,7 @@ function show(data) {
                    <h3>${fragrance[i].title}</h3>
                    <p>${fragrance[i].description}</p>
                    <div class="card-price-details">
-                       <p class="price">N${fragrance[i].price},000</p>
+                       <p class="price">N${fragrance[i].price}00</p>
                        <span>
                            <i class="fa fa-star"></i>
                            ${fragrance[i].rating}
@@ -173,7 +173,7 @@ function show(data) {
                    <h3>${skincare[i].title}</h3>
                    <p>${skincare[i].description}</p>
                    <div class="card-price-details">
-                       <p class="price">N${skincare[i].price},000 </p>
+                       <p class="price">N${skincare[i].price}00</p>
                        <span>
                            <i class="fa fa-star"></i>
                            ${skincare[i].rating}
@@ -204,7 +204,7 @@ function show(data) {
                    <h3>${groceries[i].title}</h3>
                    <p>${groceries[i].description}</p>
                    <div class="card-price-details">
-                       <p class="price">${groceries[i].price},000</p>
+                       <p class="price">N${groceries[i].price}00</p>
                        <span>
                            <i class="fa fa-star"></i>
                            ${groceries[i].rating}
@@ -235,7 +235,7 @@ function show(data) {
                    <h3>${smartphone[i].title}</h3>
                    <p>${homeDecor[i].description}</p>
                    <div class="card-price-details">
-                       <p class="price">${homeDecor[i].price},000</p>
+                       <p class="price">N${homeDecor[i].price}00</p>
                        <span>
                            <i class="fa fa-star"></i>
                            ${homeDecor[i].rating}
