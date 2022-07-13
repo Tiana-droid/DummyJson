@@ -29,46 +29,13 @@ function show(data) {
     const groceries = data.products.slice(20, 25)
     const homeDecor = data.products.slice(25, 30)
 
-    // smartphone.addEventListener('click', function() {
-    //     for (let i = 0; i < smartphone.length; i++) {
-    //         let smatabSmall = `<div class="sect-bg-i">
-    //         <div class="sect-modal">
-    //             <div class="pic">
-    //                 <i class="fa fa-close close"></i>
-    //                 <div class="arrow">
-    //                     <button class="left">
-    //                         <i class="fa fa-chevron-left"></i>
-    //                     </button>
-    //                     <button class="right">
-    //                         <i class="fa fa-chevron-right"></i>
-    //                     </button>
-    //                 </div>
-    //                 <div class="list">
-    //                     <div class="modal-card slide pic1">
-    //                     <img src="${smartphone[i].thumbnail}
-    //                     </div>
-    //                     <div class="modal-card slide pic2"></div>
-    //                     <div class="modal-card slide pic3"></div>
-    //                     <div class="modal-card slide pic4"></div>
-    //                     <div class="modal-card slide pic5"></div>
-    //                 </div>
-    //             </div>
-    //             <div class="sect-modal-detail">
-    //                 <h3>iPhone 9</h3>
-    //                 <p>An apple mobile which is nothing like apple</p>
-    //                 <div class="card-stock-details">
-    //                     <p>N477,849</p>
-    //                     <p>stock: 94</p>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>`
-    //     } document.querySelector(".sect-bg").innerHTML += smaTab;
-    // })
+   
+
+
     for (let i = 0; i < smartphone.length; i++) {
         let smaTab = `<div class="sect">
         <div class="card-cover">
-       <div class="card">
+       <div class="card"  id=${i+1} onclick="showProduct(this)">
            <div class="card-img iphone-img">
                <img src="${smartphone[i].thumbnail}" alt="none">
            </div>
@@ -99,7 +66,7 @@ function show(data) {
     for (let i = 0; i < laptop.length; i++) {
         let lapTab = `<div class="sect">
         <div class="card-cover">
-       <div class="card">
+       <div class="card"  id=${i+6} onclick="showProduct(this)">
            <div class="card-img iphone-img">
                <img src="${laptop[i].thumbnail}" alt="none">
            </div>
@@ -130,7 +97,7 @@ function show(data) {
     for (let i = 0; i < fragrance.length; i++) {
         let frag = `<div class="sect">
         <div class="card-cover">
-       <div class="card">
+       <div class="card"  id=${i+11} onclick="showProduct(this)">
            <div class="card-img iphone-img">
                <img src="${fragrance[i].thumbnail}" alt="none">
            </div>
@@ -161,7 +128,7 @@ function show(data) {
     for (let i = 0; i < skincare.length; i++) {
         let skin = `<div class="sect">
         <div class="card-cover">
-       <div class="card">
+       <div class="card"  id=${i+16} onclick="showProduct(this)">
            <div class="card-img iphone-img">
                <img src="${skincare[i].thumbnail}" alt="none">
            </div>
@@ -192,7 +159,7 @@ function show(data) {
     for (let i = 0; i < groceries.length; i++) {
         let grocery = `<div class="sect">
         <div class="card-cover">
-       <div class="card">
+       <div class="card" id=${i+21} onclick="showProduct(this)">
            <div class="card-img iphone-img">
                <img src="${groceries[i].thumbnail}" alt="none">
            </div>
@@ -223,7 +190,7 @@ function show(data) {
     for (let i = 0; i < homeDecor.length; i++) {
         let home = `<div class="sect">
         <div class="card-cover">
-       <div class="card">
+       <div class="card" id=${i+26} onclick="showProduct(this)">
            <div class="card-img iphone-img">
                 <img src="${homeDecor[i].thumbnail}" alt="none">
            </div>
@@ -310,3 +277,34 @@ arrowRight.addEventListener('click', function() {
 })
 startSlide()
 
+// Functoion to display the current products
+
+function showProduct(e){
+    const selected =  document.querySelector('.sect-bg')
+    const pic1 = document.querySelector('.pic1')
+    const pic2 = document.querySelector('.pic2')
+    const pic3 = document.querySelector('.pic3')
+    const pic4 = document.querySelector('.pic4')
+    const pic5 = document.querySelector('.pic5')
+    const descp = document.querySelector('.descp')
+    const title = document.querySelector('.title')
+    selected.style.display = "flex"
+    selected.style.justifyContent = 'center'
+
+    fetch(`https://dummyjson.com/products/${e.id}`)
+    .then(response => response.json())
+    .then(data =>{
+        pic1.innerHTML = `<img src=${data.images[0]} alt=""/>`
+        pic2.innerHTML = `<img src=${data.images[1]} alt=""/>`
+        pic3.innerHTML = `<img src=${data.images[2]} alt=""/>`
+        pic4.innerHTML = `<img src=${data.images[3]} alt=""/>`
+        pic5.innerHTML = `<img src=${data.images[2]} alt=""/>`
+        title.innerHTML = `<h3>${data.title}</h3>
+        <p>${data.description}</p>
+        <div class="card-stock-details details">
+            <p>N ${data.price}</p>
+                <p>stock: ${data.stock}</p>
+        </div>
+        `
+    });
+}
